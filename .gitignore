@@ -1,0 +1,6 @@
+out
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+build
+.gradle/
+.intellijPlatform/
