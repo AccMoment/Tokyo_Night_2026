@@ -13,7 +13,7 @@
       "borderColor": "#101014",
       "separatorColor": "#101014",
       "focusColor": "#545c7e33",
-      "acceleratorForeground": "#787c99",
+      "acceleratorForeground": "#a9b1d6",
       "acceleratorSelectionForeground": "#a9b1d6",
       "disabledForeground": "#545c7e",
       "inactiveForeground": "#3b3e52",
@@ -34,6 +34,13 @@
       "foreground": "#787c99"
     },
 
+    "MainMenu": {
+      "background": "#16161e",
+      "foreground": "#a9b1d6",
+      "selectionBackground": "#202330",
+      "selectionForeground": "#a9b1d6"
+    },
+
     "Menu": {
       "background": "#16161e",
       "foreground": "#a9b1d6",
@@ -43,11 +50,35 @@
       "borderColor": "#101014"
     },
 
+    "MenuItem": {
+      "background": "#16161e",
+      "foreground": "#a9b1d6",
+      "selectionBackground": "#202330",
+      "selectionForeground": "#a9b1d6"
+    },
+
+    "Separator": {
+      "separatorColor": "#101014"
+    },
+
+    "Group": {
+      "separatorColor": "#101014",
+      "disabledSeparatorColor": "#101014"
+    },
+
     "Popup": {
       "background": "#16161e",
-      "foreground": "#787c99",
+      "foreground": "#a9b1d6",
       "borderColor": "#101014",
       "separatorColor": "#101014"
+    },
+
+    "PopupMenu": {
+      "background": "#16161e",
+      "foreground": "#a9b1d6",
+      "disabledForeground": "#545c7e",
+      "translucentBackground": "#16161e",
+      "borderColor": "#101014"
     },
 
     "ToolWindow": {
