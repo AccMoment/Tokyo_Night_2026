@@ -3,7 +3,8 @@ plugins {
 }
 
 group = "io.github.enkia"
-version = "1.0.1"
+// 本地默认 1.0.1；CI 发版时可用 -Pversion=1.0.2 覆盖（见 .github/workflows/release.yml）
+version = providers.gradleProperty("version").orNull ?: "1.0.1"
 
 repositories {
     mavenCentral()

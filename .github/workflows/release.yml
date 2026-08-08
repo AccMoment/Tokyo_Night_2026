@@ -1,0 +1,53 @@
+name: Release
+
+# 手动发版：在 Actions 页面点击 "Run workflow"，输入版本号即可。
+# CI 上远程下载 Rider SDK 构建，产物 zip 自动发布为 GitHub Release。
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Plugin version to build and release (e.g. 1.0.2)"
+        required: true
+        default: "1.0.1"
+      draft:
+        description: "Create the release as a draft (publish manually later)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # 通过环境变量传输入，避免 shell 注入；CI=true 使 build.gradle.kts 使用 rider("2026.2") 远程 SDK
+      # buildPlugin 生成发布用的 ZIP（build 任务不包含它）
+      - name: Build plugin
+        env:
+          PLUGIN_VERSION: ${{ inputs.version }}
+        run: |
+          chmod +x gradlew
+          ./gradlew buildPlugin -Pversion="$PLUGIN_VERSION"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.version }}
+          name: Tokyo Night ${{ inputs.version }}
+          draft: ${{ inputs.draft }}
+          files: build/distributions/*.zip
+          generate_release_notes: true

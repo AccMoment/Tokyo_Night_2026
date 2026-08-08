@@ -25,10 +25,11 @@ jobs:
 
       # CI=true 使 build.gradle.kts 切换到 rider("2026.2") 远程 SDK
       # chmod +x 保险：Windows 提交的 gradlew 可能缺少可执行位
+      # buildPlugin 生成发布用的 ZIP（build 任务不包含它）
       - name: Build plugin
         run: |
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew buildPlugin
 
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
