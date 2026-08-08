@@ -24,8 +24,11 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       # CI=true 使 build.gradle.kts 切换到 rider("2026.2") 远程 SDK
+      # chmod +x 保险：Windows 提交的 gradlew 可能缺少可执行位
       - name: Build plugin
-        run: ./gradlew build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
 
       - name: Upload plugin artifact
         uses: actions/upload-artifact@v4
