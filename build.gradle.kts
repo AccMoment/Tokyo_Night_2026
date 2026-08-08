@@ -19,11 +19,19 @@ sourceSets {
     }
 }
 
+// CI（GitHub Actions 自动设置 CI=true）或显式传入 -PintellijPlatform.remoteSdk=true 时，
+// 从 JetBrains 仓库下载 Rider SDK 构建；本地开发默认使用本机已安装的 Rider（构建快，无需下载）。
+val useRemoteSdk: Boolean =
+    providers.environmentVariable("CI").orNull == "true" ||
+        providers.gradleProperty("intellijPlatform.remoteSdk").orNull == "true"
+
 dependencies {
     intellijPlatform {
-        // 使用本机已安装的 Rider 作为 SDK（构建快，无需下载整个 SDK）
-        // 若要在无 Rider 的机器上可移植构建，改为: rider("2026.2")
-        local("C:/Users/AccMoment/AppData/Local/Programs/Rider")
+        if (useRemoteSdk) {
+            rider("2026.2")
+        } else {
+            local("C:/Users/AccMoment/AppData/Local/Programs/Rider")
+        }
     }
 }
 
