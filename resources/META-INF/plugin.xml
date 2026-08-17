@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>Tokyo_Night_2026</id>
-    <version>1.0.0</version>
+    <id>Tokyo_Night_YuKi</id>
+    <version>1.0.2</version>
 
     <name>Tokyo Night Theme</name>
     <category>UI</category>
