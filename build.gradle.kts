@@ -20,25 +20,17 @@ sourceSets {
     }
 }
 
-// CI（GitHub Actions 自动设置 CI=true）或显式传入 -PintellijPlatform.remoteSdk=true 时，
-// 从 JetBrains 仓库下载 Rider SDK 构建；本地开发默认使用本机已安装的 Rider（构建快，无需下载）。
-val useRemoteSdk: Boolean =
-    providers.environmentVariable("CI").orNull == "true" ||
-        providers.gradleProperty("intellijPlatform.remoteSdk").orNull == "true"
+
 
 dependencies {
     intellijPlatform {
-        if (useRemoteSdk) {
-            rider("2026.2")
-        } else {
-            local("C:/Users/AccMoment/AppData/Local/Programs/Rider")
-        }
+        rider("2026.2")
     }
 }
 
 intellijPlatform {
     pluginConfiguration {
-        name = "Tokyo Night Theme"
+        name = "Tokyo Night YuKi"
         ideaVersion {
             sinceBuild = "251"
         }

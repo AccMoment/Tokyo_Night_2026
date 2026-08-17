@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Tokyo_Night_2026"
+rootProject.name = "Tokyo_Night_YuKi"
